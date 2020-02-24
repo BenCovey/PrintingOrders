@@ -1,0 +1,45 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>3D Printing Services</h1>
+    <p>Great for prototyping, custom gift ideas, replacement parts, cosplay, miniatures and more. I currently have two FDM Machines, both can print 220x220x250mm.</p>
+    <br />
+    <p>Types of Filament Available:</p>
+    <p>PLA, ABS, TPE, NYLON, PTEG, Carbon Fibre, Wood, Copper, Brass, Steel</p>
+    <p><small>All jobs will be quoted and printed in PLA unless requested, any other material will be extra cost</small></p>
+    <p><small>All jobs will be quoted and printed in Black, White or Grey unless requested, other colours may increase the price</small></p>
+
+
+
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        {% load static %}
+        <h2>Quality Printers</h2>
+        <img src="{% static '/images/IMG_1024.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg180"/>
+        <p>
+            Django gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="https://djangobook.com/django-tutorials/">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Tight Tolerences</h2>
+        <img src="{% static '/images/IMG_1403.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg180"/>
+        <p>The Python Package Index is a repository of software for the Python programming language.</p>
+        <p><a class="btn btn-default" href="https://pypi.org/">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Many Uses</h2>
+         <img src="{% static '/images/IMG_4112.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg180"/>
+        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
+        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+{% endblock %}

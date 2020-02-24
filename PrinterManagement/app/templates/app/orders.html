@@ -1,0 +1,208 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+
+<div id="orders">
+    
+    <div >
+        <h3>Place a new order:</h3>
+        <form  action="neworder/" method="post">
+            {% csrf_token %}
+            <label class="col-md-2 control-label" for="new-order">Order Name</label>
+            <input class="form-control" id="New_Order" type="text" name="newOrder" value=""><br />
+            <label class="col-md-2 control-label" for="description">Order Description</label>
+            <input class="form-control" id="description" type="text" name="description" value=""><br />
+            <label class="col-md-2 control-label" for="link">Item Link(s) <small>Comma or Space Separated</small></label>
+            <input class="form-control" id="link" type="text" name="link" value=""><br />
+            <label class="control-label" >You will be contacted via email automatically with details to fulfill your order.</label><br /><br />
+            <input class="btn btn-default" type="submit" value="Submit"><br />
+        </form>
+    </div>
+    <div id="orders">
+        <h3>Your Orders:</h3>
+        <style type="text/css">
+            @media screen and (min-width: 800px) {
+                .tg {
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    margin: 0px auto;
+                }
+
+                    .tg td {
+                        font-family: Arial, sans-serif;
+                        font-size: 14px;
+                        padding: 10px 5px;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: black;
+                    }
+
+                    .tg th {
+                        font-family: Arial, sans-serif;
+                        font-size: 14px;
+                        padding: 10px 5px;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: black;
+                    }
+
+                    .tg .tg-qive {
+                        font-family: Arial, Helvetica, sans-serif !important;
+                        background-color: #c0c0c0
+                    }
+            }
+            /*
+            Max width before this PARTICULAR table gets nasty
+            This query will take effect for any screen smaller than 760px
+            and also iPads specifically.
+            */
+                @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+                                        .tg td {
+                        font-family: Arial, sans-serif;
+                        font-size: 14px;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: black;
+                    }
+
+                    .tg th {
+                        font-family: Arial, sans-serif;
+                        font-size: 14px;
+                       border-style: solid;
+                        border-width: 1px;
+                        border-color: black;
+                    }
+
+                    .tg .tg-qive {
+                        font-family: Arial, Helvetica, sans-serif !important;
+                        background-color: #c0c0c0
+                    }
+                    /* Force table to not be like tables anymore */
+                    table, thead, tbody, th, td, tr {
+                        display: block;
+                    }
+
+                        /* Hide table headers (but not display: none;, for accessibility) */
+                        thead tr {
+                            position: absolute;
+                            top: -9999px;
+                            left: -9999px;
+                        }
+
+                    tr {
+                        border: 1px solid #ccc;
+                    }
+
+                    td {
+                        /* Behave  like a "row" */
+                        border: none;
+                        border-bottom: 1px solid #eee;
+                        position: relative;
+                        padding-left: 50%;
+                    }
+
+                        td:before {
+                            /* Now like a table header */
+                            position: absolute;
+                            /* Top/left values mimic padding */
+                            top: 6px;
+                            left: 6px;
+                            width: 45%;
+                            padding-right: 10px;
+                            white-space: nowrap;
+                        }
+
+                        /*
+	        Label the data
+	        */
+                        td:nth-of-type(1):before {
+                            content: "ID";
+                        }
+
+                        td:nth-of-type(2):before {
+                            content: "Status";
+                        }
+
+                         td:nth-of-type(3):before {
+                            content: "Order Name";
+                        }
+
+                        td:nth-of-type(4):before {
+                            content: "Order Description";
+                        }
+
+                        td:nth-of-type(5):before {
+                            content: "Owned By";
+                        }
+
+                        td:nth-of-type(6):before {
+                            content: "Date Recevied ";
+                        }
+
+                        td:nth-of-type(7):before {
+                            content: "Date Completed";
+                        }
+
+                        td:nth-of-type(8):before {
+                            content: "Date Picked Up";
+                        }
+
+						td:nth-of-type(9):before {
+							content: "Cost Estimate";
+						}
+
+						td:nth-of-type(10):before {
+							content: "Amount Charged";
+						}
+
+                        td:nth-of-type(11):before {
+                            content: "Link(s)";
+                        }
+
+                        td:nth-of-type(12):before {
+                            content: "File(s)";
+                        }
+                }
+        </style>
+        <table id="orders" class="tg">
+          <tr>
+            <th class="tg-qive">ID</th>        
+            <th class="tg-qive">Status</th>
+            <th class="tg-qive">Name</th>
+            <th class="tg-qive">Description</th>
+            <th class="tg-qive">Owned By</th>
+            <th class="tg-qive">Date Received</th>
+            <th class="tg-qive">Date Completed</th>
+            <th class="tg-qive">Date Picked up</th>
+            <th class="tg-qive">Cost Estimate</th>
+            <th class="tg-qive">Amount Charged</th>
+
+            <th class="tg-qive">Link(s)</th>
+            <th class="tg-qive">File(s)</th>
+          </tr>
+          {% for order in orders %}
+          <tr>
+            <td class="tg-0lax">{{ order.ID }}</td>
+            <td class="tg-0lax">{{ order.ORDER_STATUS }}</td>
+            <td class="tg-0lax">{{ order.ORDER_NAME }}</td>
+            <td class="tg-0lax">{{ order.DESCRIPTION }}</td>
+            <td class="tg-0lax">{{ order.ORDER_USER }}</td>
+            <td class="tg-0lax">{{ order.ORDER_DATE }}</td>
+            <td class="tg-0lax">{{ order.ORDER_DATE_COMPLETED }}</td>
+            <td class="tg-0lax">{{ order.ORDER_DATE_DELIVERED }}</td>
+            <td class="tg-0lax">{{ order.COST_ESTIMATED }}</td>
+            <td class="tg-0lax">{{ order.COST_CHARGED }}</td>
+            <td class="tg-0lax">{{ order.LINK }}</td>
+            <td class="tg-0lax">{{ order.FILES }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+
+    </div>
+</div>
+
+
+{% endblock %}
