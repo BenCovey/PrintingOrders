@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="jumbotron">
+<div class="row jumbotron">
     <h1>3D Printing Services</h1>
     <p>Great for prototyping, custom gift ideas, replacement parts, cosplay, miniatures and more. I currently have two FDM Machines, both can print 220x220x250mm.</p>
     <br />
@@ -16,46 +16,64 @@
 
 </div>
 
-<div class="row">
-    <div class="col-lg-12">
+<div class="row container" style="background-color:#ffffff;margin-bottom:30px;border-radius:6px;">
+
+    <div class="col-md-4" stlye="padding-left:20px;">
         <h2>Free Estimates Available!</h2>
         <form action="estimate/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-             <label class="col-md-2 control-label" for="First Name:">First Name</label> 
-            <input class="form-control" id="firstName" type="text" name="firstName" value=""><br />
-            <label class="col-md-2 control-label" for="email">Email Address:</label> 
-            <input class="form-control" id="email" type="text" name="email" value=""><br />
-            <label class="col-md-2 control-label" for="description">Describe what you would like.<br /><small>Include option links and or files.</small></label> 
-            <input class="form-control" id="link" type="text" name="description" value=""><br />
+            <label class="col-md-2 control-label" for="First Name:" style="width:auto">First Name:</label> <br /><br />
+            <input class="form-control" id="firstName" type="text" name="firstName" value="" style="align-self: flex-end;"><br />
+            <label class="col-md-2 control-label" for="email" style="width:auto">Email Address:</label> <br /><br />
+            <input class="form-control" id="email" type="text" name="email" value="" style="align-self: flex-end;"><br />
+            <label class="col-md-2 control-label" for="description" style="width:auto">Description:</label><br /><br />
+            <input class="form-control" id="description" type="text" name="description" value="" style="align-self: flex-end;"><br />
+            <small>Include option links and or files</small><br />
             <input class="form-control"  type="file" name="file"><br />
             <button class="btn btn-default" type="submit">Get Estimate!</button>
         </form>
     </div>
+    <div class="col-md-4">
+        {% load static %}
+        <img src="{% static 'images/IMG_5199.jpg'  %}" style="max-width:100%;max-height:auto;" />
+    </div>
+    <div class="col-md-4">
+        <h2>Where to find files/ideas</h2>
+        <p>There are many resources out there to find a file or idea to print, we do some minor design work at a cost of $25 per hour, 
+        though it is easiest and quickest to file a file online (most are free)</p>
+        <ul>
+            <li><a href="https://www.thingiverse.com/">Thingiverse</a></li>
+            <li><a href="https://www.yeggi.com/">Yeggi</a></li>
+            <li><a href="https://pinshape.com/">Pinshape</a></li>
+            <li><a href="https://cults3d.com/en">Cults 3D</a></li>
+            <li><a href="https://pinshape.com/">Pinshape</a></li>
+            <li><a href="https://www.turbosquid.com/Search/3D-Models/printing">Turbo Squid</a></li>
+            <li><a href="https://grabcad.com/library/category/3d-printing">GrabCAD</a></li>
+        </ul>
+    </div>
+    
 </div>
 
-<div class="row">
+<div class="row jumbotron container">
     <div class="col-md-4">
         {% load static %}
         <h2>Quality Printers</h2>
-        <img src="{% static '/images/IMG_1024.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg180"/>
-        <p>
-            Django gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://djangobook.com/django-tutorials/">Learn more &raquo;</a></p>
+        <img src="{% static '/images/IMG_1024.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg90"/>
+        <p>Using Quality printers we're able to produce quality prints on the first try, this saves you money and time. 
+        The main printers are Ender 3 Pros, technical specs can be found <a href="https://www.creality3d.shop/products/creality3d-ender-3-pro-high-precision-3d-printer">here</a> </p>
+       
     </div>
     <div class="col-md-4">
         <h2>Tight Tolerences</h2>
-        <img src="{% static '/images/IMG_1403.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg180"/>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.org/">Learn more &raquo;</a></p>
+        <img src="{% static '/images/IMG_1403.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg90"/>
+        <p>Capable of printing single piece prints with accuracy down to 50 microns means that you can have moving parts right off the print bed!</p>
+        
     </div>
     <div class="col-md-4">
         <h2>Many Uses</h2>
-         <img src="{% static '/images/IMG_4112.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg180"/>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
+         <img src="{% static '/images/IMG_4112.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg90"/>
+        <p>The uses of 3D Printed parts fit a wid range of uses, from prototyping, 3D Sculpting, miniatures, auto parts, game pieces, gaming accessories, and so much more</p>
+        
     </div>
 </div>
 
