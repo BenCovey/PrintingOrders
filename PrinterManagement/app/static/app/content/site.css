@@ -18,6 +18,9 @@ textarea {
     max-width: 280px;
 }
 
+.whitetext {
+    color:whitesmoke;
+}
 /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;

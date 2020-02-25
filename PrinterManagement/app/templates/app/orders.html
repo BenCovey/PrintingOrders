@@ -2,26 +2,27 @@
 
 {% block content %}
 
-<h2>{{ title }}</h2>
 
 
-<div id="orders">
+
+<div id="orders" >
     
-    <div >
+    <div class="container jumbotron" >
+        <h2>{{ title }}</h2>
         <h3>Place a new order:</h3>
         <form  action="neworder/" method="post">
             {% csrf_token %}
             <label class="col-md-2 control-label" for="new-order">Order Name</label>
             <input class="form-control" id="New_Order" type="text" name="newOrder" value=""><br />
-            <label class="col-md-2 control-label" for="description">Order Description</label>
+            <label class="col-md-2 control-label" for="description">Description</label>
             <input class="form-control" id="description" type="text" name="description" value=""><br />
-            <label class="col-md-2 control-label" for="link">Item Link(s) <small>Comma or Space Separated</small></label>
+            <label class="col-md-2 control-label" for="link">Link(s):</label>
             <input class="form-control" id="link" type="text" name="link" value=""><br />
             <label class="control-label" >You will be contacted via email automatically with details to fulfill your order.</label><br /><br />
             <input class="btn btn-default" type="submit" value="Submit"><br />
         </form>
     </div>
-    <div id="orders">
+    <div class="container jumbotron table-responsive" id="orders">
         <h3>Your Orders:</h3>
         <style type="text/css">
             @media screen and (min-width: 800px) {
@@ -167,36 +168,36 @@
                         }
                 }
         </style>
-        <table id="orders" class="tg">
+        <table id="orders" class="tg table .table-hover">
           <tr>
-            <th class="tg-qive">ID</th>        
-            <th class="tg-qive">Status</th>
-            <th class="tg-qive">Name</th>
-            <th class="tg-qive">Description</th>
-            <th class="tg-qive">Owned By</th>
-            <th class="tg-qive">Date Received</th>
-            <th class="tg-qive">Date Completed</th>
-            <th class="tg-qive">Date Picked up</th>
-            <th class="tg-qive">Cost Estimate</th>
-            <th class="tg-qive">Amount Charged</th>
+            <th class="tg-qive th">ID</th>        
+            <th class="tg-qive th">Status</th>
+            <th class="tg-qive th">Name</th>
+            <th class="tg-qive th">Description</th>
+            <th class="tg-qive th">Owned By</th>
+            <th class="tg-qive th">Date Received</th>
+            <th class="tg-qive th">Date Completed</th>
+            <th class="tg-qive th">Date Picked up</th>
+            <th class="tg-qive th">Cost Estimate</th>
+            <th class="tg-qive th">Amount Charged</th>
 
-            <th class="tg-qive">Link(s)</th>
-            <th class="tg-qive">File(s)</th>
+            <th class="tg-qive th">Link(s)</th>
+            <th class="tg-qive th">File(s)</th>
           </tr>
           {% for order in orders %}
           <tr>
-            <td class="tg-0lax">{{ order.ID }}</td>
-            <td class="tg-0lax">{{ order.ORDER_STATUS }}</td>
-            <td class="tg-0lax">{{ order.ORDER_NAME }}</td>
-            <td class="tg-0lax">{{ order.DESCRIPTION }}</td>
-            <td class="tg-0lax">{{ order.ORDER_USER }}</td>
-            <td class="tg-0lax">{{ order.ORDER_DATE }}</td>
-            <td class="tg-0lax">{{ order.ORDER_DATE_COMPLETED }}</td>
-            <td class="tg-0lax">{{ order.ORDER_DATE_DELIVERED }}</td>
-            <td class="tg-0lax">{{ order.COST_ESTIMATED }}</td>
-            <td class="tg-0lax">{{ order.COST_CHARGED }}</td>
-            <td class="tg-0lax">{{ order.LINK }}</td>
-            <td class="tg-0lax">{{ order.FILES }}</td>
+            <td class="tg-0lax tr">{{ order.ID }}</td>
+            <td class="tg-0lax tr">{{ order.ORDER_STATUS }}</td>
+            <td class="tg-0lax tr">{{ order.ORDER_NAME }}</td>
+            <td class="tg-0lax tr">{{ order.DESCRIPTION }}</td>
+            <td class="tg-0lax tr">{{ order.ORDER_USER }}</td>
+            <td class="tg-0lax tr">{{ order.ORDER_DATE }}</td>
+            <td class="tg-0lax tr">{{ order.ORDER_DATE_COMPLETED }}</td>
+            <td class="tg-0lax tr">{{ order.ORDER_DATE_DELIVERED }}</td>
+            <td class="tg-0lax tr">{{ order.COST_ESTIMATED }}</td>
+            <td class="tg-0lax tr">{{ order.COST_CHARGED }}</td>
+            <td class="tg-0lax tr">{{ order.LINK }}</td>
+            <td class="tg-0lax tr">None Attached</td>
           </tr>
           {% endfor %}
         </table>

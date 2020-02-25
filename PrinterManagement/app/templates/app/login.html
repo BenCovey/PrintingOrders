@@ -1,9 +1,8 @@
 {% extends "app/layout.html" %}
 
 {% block content %}
-
-<h2>{{ title }}</h2>
-<div class="row">
+<div class="container jumbotron">
+    <h2>{{ title }}</h2>
     <div class="col-md-8">
         <section id="loginForm">
             <form action="." method="post" class="form-horizontal">
@@ -11,7 +10,7 @@
                 <h4>Sign in, or create a new account to create an order</h4>
                 <hr />
                 <div class="form-group">
-                    <label for="id_username" class="col-md-2 control-label">User name</label>
+                    <label for="id_username" class="col-md-2 control-label">Username</label>
                     <div class="col-md-10">
                         {{ form.username }}
                     </div>
