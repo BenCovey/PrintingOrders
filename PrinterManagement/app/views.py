@@ -45,6 +45,9 @@ def estimate(request):
                     'year':datetime.now().year,
                 }
             )
+        else:
+            messages.error(request, 'Please fill out First Name, Email and Description to send for an estimate.')
+            return redirect('home')
     else:
          form = EstimateForm(request.POST)
          if form.is_valid():
@@ -54,14 +57,12 @@ def estimate(request):
             emailmsg = EmailMessage('Printing Estimate', message, to=[form.cleaned_data.get('email')],bcc=['benvcovey@gmail.com'])
             emailmsg.send()
             messages.info(request, 'Your Estimate has been sent successfully!')
-            redirect('app/index.html')
+            return redirect('home')
+         else:
+            messages.error(request, 'Please fill out First Name, Email and Description to send for an estimate.')
+            return redirect('home')
 
-    redirect('app/index.html')
-    return render(request, 'app/index.html',
-        {
-            'title':'Home Page',
-            'year':datetime.now().year,
-        })
+
 
 def home(request):
     """Renders the home page."""
