@@ -22,12 +22,9 @@
         <h2>Free Estimates Available!</h2>
         <form action="estimate/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <label class="col-md-2 control-label" for="First Name:" style="width:auto">First Name:</label> <br /><br />
-            <input class="form-control" id="firstName" type="text" name="firstName" value="" style="align-self: flex-end;"><br />
-            <label class="col-md-2 control-label" for="email" style="width:auto">Email Address:</label> <br /><br />
-            <input class="form-control" id="email" type="text" name="email" value="" style="align-self: flex-end;"><br />
-            <label class="col-md-2 control-label" for="description" style="width:auto">Description:</label><br /><br />
-            <input class="form-control" id="description" type="text" name="description" value="" style="align-self: flex-end;"><br />
+            <input class="form-control" id="firstName"  placeholder="First Name" aria-label="First Name" type="text" name="firstName" value="" style="align-self: flex-end;"><br />
+            <input class="form-control" id="email"  placeholder="Email Address" aria-label="Email Address" type="text" name="email" value="" style="align-self: flex-end;"><br />
+            <textarea class="form-control" id="description"  placeholder="Description" aria-label="Description" rows="5" type="text" name="description" value="" style="align-self: flex-end;"></textarea><br />
             <small>Include option links and or files</small><br />
             <input class="form-control"  type="file" name="file"><br />
             <button class="btn btn-default" type="submit">Get Estimate!</button>
@@ -35,7 +32,7 @@
     </div>
     <div class="col-md-4">
         {% load static %}
-        <img src="{% static 'images/IMG_5199.jpg'  %}" style="max-width:100%;max-height:auto;" />
+        <img src="{% static 'images/IMG_5199.jpg'  %}" style="max-width:100%;max-height:auto;padding:10px;" />
     </div>
     <div class="col-md-4">
         <h2>Where to find files/ideas</h2>

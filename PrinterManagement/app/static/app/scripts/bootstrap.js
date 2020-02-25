@@ -38,7 +38,33 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
+function removeElement(parentDiv, childDiv) {
 
+    if (childDiv == parentDiv) {
+
+        alert("The parent div cannot be removed.");
+
+    }
+
+    else if (document.getElementById(childDiv)) {
+
+        var child = document.getElementById(childDiv);
+
+        var parent = document.getElementById(parentDiv);
+
+        parent.removeChild(child);
+
+    }
+
+    else {
+
+        alert("Child div has already been removed or does not exist.");
+
+        return false;
+
+    }
+
+}
 
 +function ($) { "use strict";
 

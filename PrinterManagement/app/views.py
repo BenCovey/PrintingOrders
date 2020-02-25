@@ -29,15 +29,16 @@ def estimate(request):
         form = EstimateForm(request.POST)
         if form.is_valid():
             message = 'Hello ' + form.cleaned_data.get('firstName')
-            message += '\nThank you for submitting an estimate with us, we will reach out to you shortly with a response!'
             message += '\n\nProblem Statement:\n' + form.cleaned_data.get('description')
+            message += '\n\nThank you for submitting an estimate with us, we will reach out to you shortly with a response!'
+            
             #message += '\nFile:\n' + myfile
             emailmsg = EmailMessage('Printing Estimate', message, to=[form.cleaned_data.get('email')],bcc=['benvcovey@gmail.com'])
             base_dir = 'C:\\'  
             emailmsg.attach_file(os.path.join(base_dir,uploaded_file_url))
             emailmsg.send()
             messages.info(request, 'Your Estimate has been sent successfully!')
-            redirect('home')
+            redirect('app/index.html')
             return render(request, 'app/index.html',
                 {
                     'title':'Home Page',
@@ -48,12 +49,14 @@ def estimate(request):
          form = EstimateForm(request.POST)
          if form.is_valid():
             message = 'Hello ' + form.cleaned_data.get('firstName')
-            message += '\nThank you for submitting an estimate with us, we will reach out to you shortly with a response!'
             message += '\n\nProblem Statement:\n' + form.cleaned_data.get('description')
+            message += '\n\nThank you for submitting an estimate with us, we will reach out to you shortly with a response!'
             emailmsg = EmailMessage('Printing Estimate', message, to=[form.cleaned_data.get('email')],bcc=['benvcovey@gmail.com'])
             emailmsg.send()
             messages.info(request, 'Your Estimate has been sent successfully!')
-            redirect('home')
+            redirect('app/index.html')
+
+    redirect('app/index.html')
     return render(request, 'app/index.html',
         {
             'title':'Home Page',
