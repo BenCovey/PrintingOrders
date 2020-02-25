@@ -19,3 +19,5 @@ class order(models.Model):
     COST_ESTIMATED = models.CharField(max_length=100)
     COST_CHARGED = models.CharField(max_length=100)
     objects = models.Manager()
+
+

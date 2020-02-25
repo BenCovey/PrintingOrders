@@ -38,3 +38,10 @@ class OrderForm(forms.Form):
     class Meta:
         model = order
 
+class EstimateForm(forms.Form):
+    firstName = forms.CharField()
+    email = forms.EmailField()
+    description = forms.CharField()
+
+
+

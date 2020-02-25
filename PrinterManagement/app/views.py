@@ -9,13 +9,56 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .models import order
 from django.contrib.auth import get_user
-from .forms import SignUpForm, OrderForm
+from .forms import SignUpForm, OrderForm, EstimateForm
 from django.contrib import messages
 from django.utils.timezone import datetime #important if using timezones
 from django.core.mail import EmailMessage
+from django.shortcuts import render
 from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+import os
 
+def estimate(request):
+    if request.method == 'POST' and request.FILES:
+       
+        myfile = request.FILES['file']
 
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        form = EstimateForm(request.POST)
+        if form.is_valid():
+            message = 'Hello ' + form.cleaned_data.get('firstName')
+            message += '\nThank you for submitting an estimate with us, we will reach out to you shortly with a response!'
+            message += '\n\nProblem Statement:\n' + form.cleaned_data.get('description')
+            #message += '\nFile:\n' + myfile
+            emailmsg = EmailMessage('Printing Estimate', message, to=[form.cleaned_data.get('email')],bcc=['benvcovey@gmail.com'])
+            base_dir = 'C:\\'  
+            emailmsg.attach_file(os.path.join(base_dir,uploaded_file_url))
+            emailmsg.send()
+            messages.info(request, 'Your Estimate has been sent successfully!')
+            redirect('home')
+            return render(request, 'app/index.html',
+                {
+                    'title':'Home Page',
+                    'year':datetime.now().year,
+                }
+            )
+    else:
+         form = EstimateForm(request.POST)
+         if form.is_valid():
+            message = 'Hello ' + form.cleaned_data.get('firstName')
+            message += '\nThank you for submitting an estimate with us, we will reach out to you shortly with a response!'
+            message += '\n\nProblem Statement:\n' + form.cleaned_data.get('description')
+            emailmsg = EmailMessage('Printing Estimate', message, to=[form.cleaned_data.get('email')],bcc=['benvcovey@gmail.com'])
+            emailmsg.send()
+            messages.info(request, 'Your Estimate has been sent successfully!')
+            redirect('home')
+    return render(request, 'app/index.html',
+        {
+            'title':'Home Page',
+            'year':datetime.now().year,
+        })
 
 def home(request):
     """Renders the home page."""
