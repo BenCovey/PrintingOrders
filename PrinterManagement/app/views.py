@@ -96,10 +96,15 @@ def orders(request):
         username = request.user.username
     """Renders the about page."""
     assert isinstance(request, HttpRequest)
-    
+    all_objects = None;
+    context = None;
     print('User signed in: '+username)
-    all_objects = order.objects.filter(ORDER_USER=username).order_by('-ID') #(ORDER_USER=username)
-    context= {'orders': all_objects}
+    if request.user.is_staff:
+        all_objects = order.objects.all().order_by('-ID') #(ORDER_USER=username)
+        context= {'orders': all_objects}
+    else:
+        all_objects = order.objects.filter(ORDER_USER=username).order_by('-ID') #(ORDER_USER=username)
+        context= {'orders': all_objects}
     print(context)
     return render(
         request,
