@@ -23,12 +23,12 @@
         <h2>Free Estimates Available!</h2>
         <form action="estimate/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input class="form-control" id="firstName"  placeholder="First Name" aria-label="First Name" type="text" name="firstName" value="" style="align-self: flex-end;"><br />
-            <input class="form-control" id="email"  placeholder="Email Address" aria-label="Email Address" type="text" name="email" value="" style="align-self: flex-end;"><br />
-            <textarea class="form-control" id="description"  placeholder="Description" aria-label="Description" rows="5" type="text" name="description" value="" style="align-self: flex-end;"></textarea><br />
+            <input class="form-control" id="firstName"  placeholder="First Name" aria-label="First Name" type="text" name="firstName" value="" style="width:100%;"><br />
+            <input class="form-control" id="email"  placeholder="Email Address" aria-label="Email Address" type="text" name="email" value="" style="width:100%;"><br />
+            <textarea class="form-control" id="description"  placeholder="Description" aria-label="Description" rows="6" type="text" name="description" value="" style="width:100%;"></textarea><br />
             <small>Include option links and or files</small><br />
-            <input class="form-control"  type="file" name="file"><br />
-            <button class="btn btn-default" type="submit">Get Estimate!</button>
+            <input class="form-control"  type="file" name="file" style="width:auto;"><br />
+            <button class="btn btn-default" type="submit" style="float:right;">Get Estimate!</button>
         </form>
     </div>
     <div class="col-md-4">
@@ -38,16 +38,17 @@
     <div class="col-md-4">
         <h2>Where to find files/ideas</h2>
         <p>There are many resources out there to find a file or idea to print, we do some minor design work at a cost of $25 per hour, 
-        though it is easiest and quickest to file a file online (most are free)</p>
-        <ul>
-            <li><a href="https://www.thingiverse.com/">Thingiverse</a></li>
-            <li><a href="https://www.yeggi.com/">Yeggi</a></li>
-            <li><a href="https://pinshape.com/">Pinshape</a></li>
-            <li><a href="https://cults3d.com/en">Cults 3D</a></li>
-            <li><a href="https://pinshape.com/">Pinshape</a></li>
-            <li><a href="https://www.turbosquid.com/Search/3D-Models/printing">Turbo Squid</a></li>
-            <li><a href="https://grabcad.com/library/category/3d-printing">GrabCAD</a></li>
-        </ul>
+        though it is easiest and quickest to file a file online (most are free), these are presented in the order I use them personally.</p>
+        <table class="table container">
+            <tr><td><a href="https://www.thingiverse.com/">Thingiverse</a></td><td>Free</td></tr>
+            <tr><td><a href="https://www.yeggi.com/">Yeggi</a></td><td>Mixed*</td></tr>
+            <tr><td><a href="https://pinshape.com/">Pinshape</a></td><td>Mixed*</td></tr>
+            <tr><td><a href="https://cults3d.com/en">Cults 3D</a></td><td>Mixed*</td></tr>
+            <tr><td><a href="https://pinshape.com/">Pinshape</a></td><td>Mixed*</td></tr>
+            <tr><td><a href="https://www.turbosquid.com/Search/3D-Models/printing">Turbo Squid</a></td><td>Mixed*</td></tr>
+            <tr><td><a href="https://grabcad.com/library/category/3d-printing">GrabCAD</a></td><td>Free</td></tr>
+        </table>
+        <small>*Mixed: Some items are free others can be paid for</small>
     </div>
     
 </div>

@@ -186,6 +186,7 @@ def neworder(request):
             messages.info(request, 'Automated email has been sent regarding your order!')
             return redirect('orders')
         else:
-            messages.info(request, 'Your Order has failed to send')
+            messages.info(request, 'Your Order has failed to send, ensure Order Name and Description are filled.')
             return redirect('orders')
+   
     

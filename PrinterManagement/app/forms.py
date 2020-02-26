@@ -33,7 +33,7 @@ class SignUpForm(UserCreationForm):
 class OrderForm(forms.Form):
     newOrder = forms.CharField(label='New_Order', max_length=100)
     description = forms.CharField(label='description', max_length=1000)
-    link = forms.CharField(label='link', max_length=100)
+    link = forms.CharField(label='link', max_length=100, required=False)
 
     class Meta:
         model = order

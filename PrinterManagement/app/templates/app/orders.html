@@ -12,12 +12,9 @@
         <h3>Place a new order:</h3>
         <form  action="neworder/" method="post">
             {% csrf_token %}
-            <label class="col-md-2 control-label" for="new-order">Order Name</label>
-            <input class="form-control" id="New_Order" type="text" name="newOrder" value=""><br />
-            <label class="col-md-2 control-label" for="description">Description</label>
-            <input class="form-control" id="description" type="text" name="description" value=""><br />
-            <label class="col-md-2 control-label" for="link">Link(s):</label>
-            <input class="form-control" id="link" type="text" name="link" value=""><br />
+            <input class="form-control" id="New_Order" type="text" name="newOrder" placeholder="Order Name" aria-label="Order Name" value=""><br />
+            <input class="form-control" id="description" type="text" placeholder="Order Description" aria-label="Order Description" name="description" value=""><br />
+            <input class="form-control" id="link" type="text" placeholder="Provide Link(s) optional" aria-label="Provide Link(s) optional" name="link" value=""><br />
             <label class="control-label" >You will be contacted via email automatically with details to fulfill your order.</label><br /><br />
             <input class="btn btn-default" type="submit" value="Submit"><br />
         </form>
