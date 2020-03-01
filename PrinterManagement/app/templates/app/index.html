@@ -2,77 +2,82 @@
 
 {% block content %}
 
-<div class="row jumbotron">
-    <h1>3D Printing Services</h1>
-    <p>Great for prototyping, custom gift ideas, replacement parts, cosplay, miniatures and more. I currently have two FDM Machines, both can print 220x220x250mm.</p>
-    <div style="font-size:initial; line-height:initial;">
-    <p>Types of Filament Available:</p>
-    <p>PLA, ABS, TPE, NYLON, PTEG, Carbon Fibre, Wood, Copper, Brass, Steel</p>
-    <p><small>All jobs will be quoted and printed in PLA unless requested, any other material will be extra cost</small></p>
-    <p><small>All jobs will be quoted and printed in Black, White or Grey unless requested, other colours may increase the price</small></p>
+<div class=" container-fluid jumbotron">
+    <div class="row">
+        <h1>3D Printing Services Halifax!</h1>
+        <p>Great for prototyping, custom gift ideas, replacement parts, cosplay, miniatures and more. I currently have two FDM Machines, both can print 220x220x250mm.</p>
+        <p>All pick up items can be picked up within Halifax, large orders can be delivered within Halifax, and items can be shipped at cost with any courier local to Halifax.</p>
+        <div style="font-size:initial; line-height:initial;">
+        <p>Types of Filament Available:</p>
+        <p>PLA, ABS, TPE, NYLON, PTEG, Carbon Fibre, Wood, Copper, Brass, Steel</p>
+        <p><small>All jobs will be quoted and printed in PLA unless requested, any other material will be extra cost</small></p>
+        <p><small>All jobs will be quoted and printed in Black, White or Grey unless requested, other colours may increase the price</small></p>
+        </div>
     </div>
-
 
 
 
 </div>
 
-<div class="row container" style="background-color:#ffffff;margin-bottom:30px;border-radius:6px;">
+<div class=" container-fluid" style="background-color:#ffffff;margin-bottom:30px;border-radius:6px; ">
+    <div class="row">
+        <div class="col-md-4 " stlye="padding-left:20px;">
+            <h2>Free Estimates Available!</h2>
+            <form action="estimate/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input class="form-control" id="firstName"  placeholder="First Name" aria-label="First Name" type="text" name="firstName" value="" style="width:100%;"><br />
+                <input class="form-control" id="email"  placeholder="Email Address" aria-label="Email Address" type="text" name="email" value="" style="width:100%;"><br />
+                <textarea class="form-control" id="description"  placeholder="Description" aria-label="Description" rows="6" type="text" name="description" value="" style="width:100%;"></textarea><br />
+                <small>Include option links and or files</small><br />
 
-    <div class="col-md-4" stlye="padding-left:20px;">
-        <h2>Free Estimates Available!</h2>
-        <form action="estimate/" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input class="form-control" id="firstName"  placeholder="First Name" aria-label="First Name" type="text" name="firstName" value="" style="width:100%;"><br />
-            <input class="form-control" id="email"  placeholder="Email Address" aria-label="Email Address" type="text" name="email" value="" style="width:100%;"><br />
-            <textarea class="form-control" id="description"  placeholder="Description" aria-label="Description" rows="6" type="text" name="description" value="" style="width:100%;"></textarea><br />
-            <small>Include option links and or files</small><br />
-            <input class="form-control"  type="file" name="file" style="width:auto;"><br />
-            <button class="btn btn-default" type="submit" style="float:right;">Get Estimate!</button>
-        </form>
+                <input class="custom-file" type="file" name="file" style="width:auto;"><br />
+                <button class="btn btn-default" type="submit" style="float:right;">Get Estimate!</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            {% load static %}
+            <img src="{% static 'images/IMG_5199.jpg'  %}" class="img-fluid rounded" style="padding-top:15px;" />
+        </div>
+        <div class="col-md-4">
+            <h2>Where to find files/ideas</h2>
+            <p>There are many resources out there to find a file or idea to print, we do some minor design work at a cost of $25 per hour, 
+            though it is easiest and quickest to file a file online (most are free), these are presented in the order I use them personally.</p>
+            <table class="table container">
+                <tr><td><a href="https://www.thingiverse.com/">Thingiverse</a></td><td>Free</td></tr>
+                <tr><td><a href="https://www.yeggi.com/">Yeggi</a></td><td>Mixed*</td></tr>
+                <tr><td><a href="https://pinshape.com/">Pinshape</a></td><td>Mixed*</td></tr>
+                <tr><td><a href="https://cults3d.com/en">Cults 3D</a></td><td>Mixed*</td></tr>
+                <tr><td><a href="https://pinshape.com/">Pinshape</a></td><td>Mixed*</td></tr>
+                <tr><td><a href="https://www.turbosquid.com/Search/3D-Models/printing">Turbo Squid</a></td><td>Mixed*</td></tr>
+                <tr><td><a href="https://grabcad.com/library/category/3d-printing">GrabCAD</a></td><td>Free</td></tr>
+            </table>
+            <small>*Mixed: Some items are free others can be paid for</small>
+        </div>
     </div>
-    <div class="col-md-4">
-        {% load static %}
-        <img src="{% static 'images/IMG_5199.jpg'  %}" style="max-width:100%;max-height:auto;padding:10px;" />
-    </div>
-    <div class="col-md-4">
-        <h2>Where to find files/ideas</h2>
-        <p>There are many resources out there to find a file or idea to print, we do some minor design work at a cost of $25 per hour, 
-        though it is easiest and quickest to file a file online (most are free), these are presented in the order I use them personally.</p>
-        <table class="table container">
-            <tr><td><a href="https://www.thingiverse.com/">Thingiverse</a></td><td>Free</td></tr>
-            <tr><td><a href="https://www.yeggi.com/">Yeggi</a></td><td>Mixed*</td></tr>
-            <tr><td><a href="https://pinshape.com/">Pinshape</a></td><td>Mixed*</td></tr>
-            <tr><td><a href="https://cults3d.com/en">Cults 3D</a></td><td>Mixed*</td></tr>
-            <tr><td><a href="https://pinshape.com/">Pinshape</a></td><td>Mixed*</td></tr>
-            <tr><td><a href="https://www.turbosquid.com/Search/3D-Models/printing">Turbo Squid</a></td><td>Mixed*</td></tr>
-            <tr><td><a href="https://grabcad.com/library/category/3d-printing">GrabCAD</a></td><td>Free</td></tr>
-        </table>
-        <small>*Mixed: Some items are free others can be paid for</small>
-    </div>
-    
 </div>
 
-<div class="row jumbotron container">
-    <div class="col-md-4">
-        {% load static %}
-        <h2>Quality Printers</h2>
-        <img src="{% static '/images/IMG_1024.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg90"/>
-        <p>Using Quality printers we're able to produce quality prints on the first try, this saves you money and time. 
-        The main printers are Ender 3 Pros, technical specs can be found <a href="https://www.creality3d.shop/products/creality3d-ender-3-pro-high-precision-3d-printer">here</a> </p>
+<div class="jumbotron container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            {% load static %}
+            <h2>Quality Printers</h2>
+            <img src="{% static '/images/IMG_1024.jpg' %}" class="img-fluid rounded"/>
+            <p>Using Quality printers we're able to produce quality prints on the first try, this saves you money and time. 
+            The main printers are Ender 3 Pros, technical specs can be found <a href="https://www.creality3d.shop/products/creality3d-ender-3-pro-high-precision-3d-printer">here</a> </p>
        
-    </div>
-    <div class="col-md-4">
-        <h2>Tight Tolerences</h2>
-        <img src="{% static '/images/IMG_1403.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg90"/>
-        <p>Capable of printing single piece prints with accuracy down to 50 microns means that you can have moving parts right off the print bed!</p>
+        </div>
+        <div class="col-md-4" >
+            <h2>Tight Tolerences</h2>
+            <img src="{% static '/images/IMG_1403.jpg' %}" class="img-fluid rounded"/>
+            <p>Capable of printing single piece prints with accuracy down to 50 microns means that you can have moving parts right off the print bed!</p>
         
-    </div>
-    <div class="col-md-4">
-        <h2>Many Uses</h2>
-         <img src="{% static '/images/IMG_4112.jpg' %}" style="max-width:100%;max-height:auto;" class="rotateimg90"/>
-        <p>The uses of 3D Printed parts fit a wide range of uses, from prototyping, 3D Sculpting, miniatures, auto parts, game pieces, gaming accessories, and so much more</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Many Uses</h2>
+             <img src="{% static '/images/IMG_4112.jpg' %}" class="img-fluid rounded"/>
+            <p>The uses of 3D Printed parts fit a wide range of uses, from prototyping, 3D Sculpting, miniatures, auto parts, game pieces, gaming accessories, and so much more</p>
         
+        </div>
     </div>
 </div>
 

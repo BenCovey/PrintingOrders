@@ -89,6 +89,19 @@ def contact(request):
         }
     )
 
+def about(request):
+    """Renders the contact page."""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/contact.html',
+        {
+            'title':'about',
+            'message':'About page.',
+            'year':datetime.now().year,
+        }
+    )
+
 @login_required(login_url='/login/')
 def orders(request):
     username = None
