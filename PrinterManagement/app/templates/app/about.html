@@ -2,9 +2,68 @@
 
 {% block content %}
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
+<div class="jumbotron container-fluid">
+    <h2>About</h2>
+    <div class="row">
+        <div class="col-md-4">
+            {% load static %}
+            <h2>Quality Printers</h2>
+            <img src="{% static '/images/IMG_1024.jpg' %}" class="img-fluid rounded"/>
+            <p>Using Quality printers we're able to produce quality prints on the first try, this saves you money and time. 
+            The main printers are Ender 3 Pros, technical specs can be found <a href="https://www.creality3d.shop/products/creality3d-ender-3-pro-high-precision-3d-printer">here</a> </p>
+       
+        </div>
+        <div class="col-md-4" >
+            <h2>Tight Tolerences</h2>
+            <img src="{% static '/images/IMG_1403.jpg' %}" class="img-fluid rounded"/>
+            <p>Capable of printing single piece prints with accuracy down to 50 microns means that you can have moving parts right off the print bed!</p>
+        
+        </div>
+        <div class="col-md-4">
+            <h2>Many Uses</h2>
+             <img src="{% static '/images/IMG_4112.jpg' %}" class="img-fluid rounded"/>
+            <p>The uses of 3D Printed parts fit a wide range of uses, from prototyping, 3D Sculpting, miniatures, auto parts, game pieces, gaming accessories, and so much more</p>
+        
+        </div>
+    </div>
+</div>
+<div class="jumbotron container-fluid">
+    <div class="row">
+        <h2>More Information</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Pricing:</p>
+            <p>The cost of a print is highly based upon time and filament used, all orders start at $5 to be worth my time, 
+            so it is often cost effective to order multiple smaller items per order to get the most out of the $5. Larger items can vary hugely depending on size, density, 
+            complexity to print. For example the image above and to the right is a set of headphone bodies printed. It was six piece, four of which required supports and it 
+            totalled $35</p>
+            
+        </div>
+        <div class="col-md-6">
+            <p>Filaments:</p>
+            <p>Filament Prices vary a fair bit for anything outside of PLA and ABS, Wood, Copper, Brass and Steel can be had for a reasonable price, Carbon Fibre, PETG, and Nylon 
+            should be exclusively used for prints that require specific strength such as RC parts that would typically be too weak made of PLA.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-mg-8">
+            <p>Types of Filament Available:</p>
+            <ul><li>PLA - Standard filament used, strong though it has a low melting temperature</li>
+            <li>ABS - Stronger than PLA, slightly flexible, better heat resistence</li>
+            <li>NYLON - Extremely Durable, heat resistent, and chemical resistent</li>
+            <li>PETG - Very Durable, more flexible than both PLA and ABS</li>
+            <li>Carbon Fibre - Light weight very high strength material, expensive to print with</li>
+            <li>PLA Infused (Wood, Copper, Brass, Steel) - infused with particles of metal or wood for asthetics</li></ul>
+            <p><small>All jobs will be quoted and printed in PLA unless requested, any other material will be extra cost</small></p>
+            <p><small>All jobs will be quoted and printed in Black, White or Grey unless requested, other colours may increase the price</small></p>
+        </div>
+        <div class="col-md-4">
+            <img src="{% static '/images/filament.jpg' %}" class="img-fluid rounded"/>
+        </div>
+    </div>
 
-<p>Use this area to provide additional information.</p>
+</div>
+
 
 {% endblock %}

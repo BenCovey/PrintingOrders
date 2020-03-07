@@ -94,7 +94,7 @@ def about(request):
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/contact.html',
+        'app/about.html',
         {
             'title':'about',
             'message':'About page.',
@@ -139,6 +139,17 @@ def signup(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
+            message = 'A new user has registered with the following info:'
+            message += '\nUsername:' + username
+            if(form.cleaned_data.get('first_name') and form.cleaned_data.get('last_name')):
+                message += '\nName (First + Last):' + form.cleaned_data.get('first_name') + ' ' + form.cleaned_data.get('last_name')
+            message += '\nEmail: ' + form.cleaned_data.get('email')
+            emailmsg = EmailMessage('New registered User:'+username, message, to=['benvcovey@gmail.com'])
+            emailmsg.send()
+            body = 'Thank you '+ username + ' for registering with us!\nIf you have any questions '
+            body += 'regarding 3D Prints or the technology in general, simply reply to this email and we\'re happy to help you out!'
+            registrationmsg = EmailMessage('Thank you for Registering!',body,to=[form.cleaned_data.get('email')])
+            registrationmsg.send()
             login(request, user)
             return redirect('orders')
     else:
